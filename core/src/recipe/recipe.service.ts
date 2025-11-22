@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Recipe } from './entities/recipe.entity';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class RecipeService {
+  constructor(
+    @InjectModel(Recipe.name) private readonly recipeModel: Model<Recipe>,
+  ) {}
+
   create(createRecipeDto: CreateRecipeDto) {
-    return 'This action adds a new recipe';
+    return this.recipeModel.insertOne(createRecipeDto);
   }
 
   findAll() {

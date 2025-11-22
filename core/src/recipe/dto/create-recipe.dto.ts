@@ -1,1 +1,3 @@
-export class CreateRecipeDto {}
+export class CreateRecipeDto {
+  idea: string;
+}

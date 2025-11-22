@@ -1,1 +1,12 @@
-export class Recipe {}
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
+
+export type RecipeDocument = HydratedDocument<Recipe>;
+
+@Schema()
+export class Recipe {
+  @Prop()
+  idea: string;
+}
+
+export const RecipeSchema = SchemaFactory.createForClass(Recipe);

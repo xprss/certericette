@@ -27,6 +27,7 @@ export class BotUpdate {
     ctx: NarrowedContext<Context, TgUpdate.MessageUpdate<Message.TextMessage>>,
   ) {
     const message = ctx.message?.text;
-    await ctx.reply(`Hai scritto: "${message}"`);
+    await this.recipeService.create({ idea: message });
+    await ctx.reply(`Ho memorizzato: "${message}"`);
   }
 }

@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { RecipeModule } from './recipe/recipe.module';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { BotUpdate } from './bot.update';
@@ -40,7 +38,6 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService, BotUpdate],
+  providers: [BotUpdate],
 })
 export class AppModule {}
