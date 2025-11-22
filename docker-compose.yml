@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  certericette_bot:
+    build:
+      context: ./core
+      dockerfile: ./Dockerfile
+    container_name: certericette_bot
+    restart: unless-stopped
+    env_file:
+      - ./core/.env
+    ports:
+      - "8000:8000"
