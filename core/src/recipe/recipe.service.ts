@@ -15,8 +15,9 @@ export class RecipeService {
     return this.recipeModel.insertOne(createRecipeDto);
   }
 
-  findAll() {
-    return `This action returns all recipe`;
+  async findAll() {
+    const recipes: Recipe[] = await this.recipeModel.find().exec();
+    return recipes;
   }
 
   findOne(id: number) {
